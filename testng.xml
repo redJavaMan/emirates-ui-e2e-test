@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Emirates" parallel="tests" thread-count="2">
+    <listeners>
+        <listener class-name="io.qameta.allure.testng.AllureTestNg"/>
+    </listeners>
+    <test name="Test Group 1">
+        <classes>
+            <class name="com.emirates.test.AddToCartTest" />
+            <class name="com.emirates.test.CurrencyDropDownTest" />
+        </classes>
+    </test>
+</suite>
