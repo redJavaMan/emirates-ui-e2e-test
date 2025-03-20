@@ -62,5 +62,17 @@ public class HomePage {
         String formattedPrice=driver.findElement(productPrice).getText().replaceAll("[$€£ABHDCK¥WMYROQSGFE]", "").trim().split("\\.")[0];
         return Integer.parseInt(formattedPrice);
     }
+    public int waitForPriceChange(int originalPrice) {
+        wait.until(driver -> {
+            try {
+                int currentPrice = getProductPrice();
+                return currentPrice != originalPrice;
+            } catch (Exception e) {
+                return false;
+            }
+        });
+        
+        return getProductPrice();
     }
+}
 
