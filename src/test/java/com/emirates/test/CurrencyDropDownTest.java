@@ -10,13 +10,12 @@ import java.util.ArrayList;
 
 public class CurrencyDropDownTest extends BaseTest {
     @Test
-    public void testCurrencyDropDown() throws InterruptedException {
+    public void testCurrencyDropDown(){
         Header header=homePage.getHeader();
         int beforePrices = homePage.getProductPrice();
         System.out.println("Before change :"+beforePrices);
         header.setCurrency("CAD");
-        Thread.sleep(   3000);
-        int afterPrices = homePage.getProductPrice();
+        int afterPrices = homePage.waitForPriceChange(beforePrices);
         System.out.println("After change :"+afterPrices);
         int result=Utils.calculateCurrency("USD","CAD",beforePrices);
         Assert.assertEquals(afterPrices, result);
