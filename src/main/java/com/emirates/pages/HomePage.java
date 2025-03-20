@@ -14,9 +14,11 @@ public class HomePage {
     private  Header header;
     protected By productPrice = By.cssSelector("div.ProductTile_currentPrice__CMLRc");
     private By closeCookieButton= By.cssSelector("button.onetrust-close-btn-handler ");
+    private WebDriverWait wait;
     public HomePage(WebDriver driver) {
             this.driver=driver;
             this.header=new Header(driver);
+            this.wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         }
         public Header getHeader() {
             return this.header;
