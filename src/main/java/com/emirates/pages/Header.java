@@ -11,11 +11,15 @@ import java.time.Duration;
 public class Header {
     private WebDriver driver;
     private By currencyDropDown=By.cssSelector("button.ContextMenuTrigger_trigger__nAn3T");
+    private WebDriverWait wait;
     public Header(WebDriver driver) {
         this.driver = driver;
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(3));
     }
     public void setCurrency(String currency){
         driver.findElement(currencyDropDown).click();
-        driver.findElement(By.xpath("//button[@value='"+currency+"']")).click();
+        By currencyOption = By.xpath("//button[@value='" + currency + "']");
+        wait.until(ExpectedConditions.elementToBeClickable(currencyOption)).click();
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(currencyOption));
     }
 }
